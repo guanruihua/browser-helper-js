@@ -6,4 +6,4 @@
  redirect('https://www.google.com/')
  ```
  */
-export const redirect = (url: string) => location.href = url 
+export const redirect = (url: string) => (location.href = url)

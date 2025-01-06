@@ -28,21 +28,42 @@ const bindTop = () => {
 }
 scrollToTop()
  */
-// 回到顶部
-export function scrollTop() {
-	window.scrollTo({ top: 0, behavior: 'smooth' })
-	return
+
+import { getHTMLElement } from '../dom'
+import { LikeHTMLElement } from '../type'
+
+/**
+ * @title scrollTop
+ * @description 回到顶部
+ * @returns {void}
+ */
+export function scrollTop(likeDom?: LikeHTMLElement): void {
+  const dom = getHTMLElement(likeDom)
+  if (dom) {
+    dom?.scrollTo({ top: 0, behavior: 'smooth' })
+  }
 }
 
-export function scrollTo() {
-	return
+/**
+ * @title scrollBottom
+ * @description 回到底部
+ * @returns {void}
+ */
+export function scrollBottom(likeDom?: LikeHTMLElement): void {
+  const dom = getHTMLElement(likeDom)
+  if (dom) {
+    dom.scrollTo({ top: dom.scrollHeight ?? 0, behavior: 'smooth' })
+  }
 }
-
 
 // 获取当前页面的滚动位置
 
-export const getScrollPosition = (el = window) => ({
-	// x: el.pageXOffset !== undefined ? el.pageXOffset : el.scrollLeft,
-	// y: el.pageYOffset !== undefined ? el.pageYOffset : el.scrollTop
-})
+export const getScrollPosition = (likeDom?: LikeHTMLElement) => {
+  const el: any = getHTMLElement(likeDom)
+  if (el) {
+    const x = el.pageXOffset !== undefined ? el.pageXOffset : el.scrollLeft
+    const y = el.pageYOffset !== undefined ? el.pageYOffset : el.scrollTop
+    return { x, y }
+  }
+}
 // getScrollPosition(); // {x: 0, y: 200}

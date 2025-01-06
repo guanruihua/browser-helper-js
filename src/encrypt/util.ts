@@ -37,12 +37,10 @@ export function base64ToArrayBuffer(base64: string) {
 }
 
 // 将 CryptoKey 对象导出为 ArrayBuffer
-async function exportCryptoKey(key:CryptoKey) {
+export async function exportCryptoKey(key: CryptoKey) {
   const exportedKey = await crypto.subtle.exportKey('raw', key)
   return new Uint8Array(exportedKey).buffer
 }
-
-
 
 export async function cryptoKeyToBase64(key: Uint8Array) {
   console.log(key)

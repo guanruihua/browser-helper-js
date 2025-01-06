@@ -9,10 +9,10 @@ export type ClassNameType = ClassNameUnit
 /**
  * @title classNames
  * @description 指定className 合集 来取消或使用某className
- * @param {ClassNameUnit[]} classNames className合集 
+ * @param {ClassNameType[]} classNames className合集 
  * @returns {string}
  */
-export function classNames(...rest: ClassNameUnit[]): string {
+export function classNames(...rest: ClassNameType[]): string {
 
 	const resultSet = new Set<string | number>()
 	const choicesMap: Record<string, boolean> = {}
@@ -26,7 +26,7 @@ export function classNames(...rest: ClassNameUnit[]): string {
 		}
 	}
 
-	function forEachData(list: ClassNameUnit[]) {
+	function forEachData(list: ClassNameType[]) {
 		list.forEach(item => {
 
 			if (!item) return

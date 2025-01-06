@@ -22,7 +22,7 @@ export type BaseValue = string | number | ObjectType
  * @param {CookieConfig} [config] 
  * @return {void}
  */
-export function setCookie(name: string, value: BaseValue | BaseValue[], config?: CookieConfig) {
+export function setCookie(name: string, value: BaseValue | BaseValue[], config?: CookieConfig): void {
 	const { expiryDays, domain, path } = config || {}
 	const Days = expiryDays || 10
 	const expiryTime = new Date()
